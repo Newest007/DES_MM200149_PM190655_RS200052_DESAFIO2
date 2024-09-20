@@ -1,0 +1,30 @@
+﻿
+services:
+  apigateway:
+    build:
+      context: ./APIGateway_Desafio2DSE
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - aplicacionapi
+
+  aplicacionapi:
+    build:
+      context: ./AplicacionAPI_Desafio2_MM200149_PM190655
+      dockerfile: Dockerfile
+    ports:
+      - "8081:81"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Database=Desafio2DSE_MM200149_PM190655;User=sa;Password=Admin123;
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "Admin123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+
+volumes:
+  sqlserver-data:

@@ -1,0 +1,6 @@
+@AplicacionAPI_Desafio2_MM200149_PM190655_HostAddress = http://localhost:5123
+
+GET {{AplicacionAPI_Desafio2_MM200149_PM190655_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
